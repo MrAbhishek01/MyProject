@@ -1,5 +1,7 @@
 package com.abhi.sbean;
 
+import java.util.Objects;
+
 public class EmployeeBean {
 	private Integer empNo;
 	private String name;
@@ -44,6 +46,24 @@ public class EmployeeBean {
 
 	public void setMid(String mid) {
 		this.mid = mid;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, empNo, mid, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmployeeBean other = (EmployeeBean) obj;
+		return Objects.equals(address, other.address) && Objects.equals(empNo, other.empNo)
+				&& Objects.equals(mid, other.mid) && Objects.equals(name, other.name);
 	}
 
 	@Override
